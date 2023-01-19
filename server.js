@@ -17,7 +17,7 @@ app.use(express.static('public'));
 app.get("/notes", (req, res) => res.sendFile(path.join(__dirname, './public/notes.html')));
 
 app.get("/api/notes", (req, res) => {
-    readFromFile("./db/db.json")
+    readFromFile(db)
     .then((data) => {
         res.json(JSON.parse(data));
     });
@@ -34,9 +34,9 @@ app.post("/api/notes", (req, res) => {
             text,
             id: uniqid()
         }
-        readAndAppend(newNote, "./db/db.json");
+        readAndAppend(newNote, db);
         res.json(`New note added`)
     }
-})
+});
 
 app.listen(PORT, () => console.log(`Serving static asset routes at http://localhost:${PORT}`));
