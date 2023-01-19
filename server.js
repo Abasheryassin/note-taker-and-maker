@@ -31,6 +31,8 @@ app.post("/api/notes", (req, res) => {
             text,
             id: uniqid()
         }
+        readAndAppend(newNote, "./db/db.json");
+        res.json(`New note added`)
     }
 })
 
