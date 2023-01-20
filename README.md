@@ -8,7 +8,7 @@ This project was created in order to create, update, and delete notes and any ot
 
 The live application can be found at the link below along with a screenshot of the deployed application.
 
-https://afternoon-forest-01155.herokuapp.com/notes
+https://afternoon-forest-01155.herokuapp.com 
 
  ![alt text](./assets/note-taker-screenshot.png)
 
