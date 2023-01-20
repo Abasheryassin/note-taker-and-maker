@@ -34,8 +34,21 @@ app.post("/api/notes", (req, res) => {
             id: uniqid()
         }
         readAndAppend(newNote, "./db/db.json");
-        res.json(`New note added`)
+        res.json(`New note added`);
     }
 });
 
+app.delete("/api/notes/:id", (req, res) => {
+    const id = req.params.id;
+
+    readFromFile("./db/db.json")
+    .then((data) => JSON.parse(data))
+    .then((data) => {
+        const newDataSet = data.filter((db) => db.id !== id);
+
+        writeToFile('./db/db.json', newDataSet);
+
+        res.json("Note has been deleted");
+    })
+})
 app.listen(PORT, () => console.log(`Serving static asset routes at http://localhost:${PORT}`));
